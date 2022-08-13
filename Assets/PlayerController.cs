@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private void DoJump(InputAction.CallbackContext obj)
     {
-        _rb.AddForce(Vector3.up * _jumpForce);
+        _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + _jumpForce);
     }
 
     private void OnDisable()
