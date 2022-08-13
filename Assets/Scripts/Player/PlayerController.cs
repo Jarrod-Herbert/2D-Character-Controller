@@ -6,11 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInputActions _playerInputActions;
     private InputAction _movement;
-
     private Rigidbody2D _rb;
     
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _horizontalSpeed;
+    [SerializeField] private Transform _groundCheck;
+    [SerializeField] private LayerMask _groundLayer;
+    
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(_groundCheck.position, 0.1f, _groundLayer);
+    }
 
     private void Awake()
     {
@@ -42,5 +48,10 @@ public class PlayerController : MonoBehaviour
     {
         _rb.velocity = new Vector2(_movement.ReadValue<Vector2>().x * _horizontalSpeed,
             _rb.velocity.y);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(_groundCheck.position, 0.1f);
     }
 }
