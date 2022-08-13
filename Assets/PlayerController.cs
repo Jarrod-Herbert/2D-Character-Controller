@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
     
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _horizontalSpeed;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Read movement input
+        _rb.velocity = new Vector2(_movement.ReadValue<Vector2>().x * _horizontalSpeed,
+            _rb.velocity.y);
     }
 }
