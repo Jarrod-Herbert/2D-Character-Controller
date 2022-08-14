@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public Core Core { get; private set; }
     public PlayerInputManager InputManager { get; private set; }
     
     [SerializeField] private float _jumpForce;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Core = GetComponentInChildren<Core>();
         InputManager = GetComponent<PlayerInputManager>();
 
         _rb = GetComponent<Rigidbody2D>();
@@ -25,11 +27,6 @@ public class Player : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(_groundCheck.position, 0.1f, _groundLayer);
-    }
-
-    public void DoJump(InputAction.CallbackContext obj)
-    {
-        _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + _jumpForce);
     }
 
     private void FixedUpdate()
