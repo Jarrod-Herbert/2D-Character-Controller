@@ -4,34 +4,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movement : CoreComponent
+public class Movement : MonoBehaviour
 {
     [SerializeField] private float _jumpForce= 10f;
     [SerializeField] private float _moveSpeed = 3f;
-    
-    public Rigidbody2D RB { get; private set; }
 
-    private Player _player;
+    private Rigidbody2D _rb;
 
     private void Awake()
     {
-        RB = GetComponentInParent<Rigidbody2D>();
-        _player = GetComponentInParent<Player>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     public void Jump(InputAction.CallbackContext obj)
     {
-        Debug.Log("Jumped from Movement component!");
-        RB.velocity = new Vector2(RB.velocity.x, RB.velocity.y + _jumpForce);
+        _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + _jumpForce);
     }
 
-    public void MoveHorizontal()
+    public void MoveHorizontal(int direction)
     {
-        RB.velocity = new Vector2(_player.InputManager.Movement.ReadValue<Vector2>().x * _moveSpeed, RB.velocity.y);
-    }
-
-    private void FixedUpdate()
-    {
-        MoveHorizontal();
+        _rb.velocity = new Vector2(direction * _moveSpeed, _rb.velocity.y);
     }
 }

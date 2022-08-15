@@ -9,12 +9,13 @@ public class PlayerInputManager : MonoBehaviour
     public InputAction Movement { get; private set; }
     
     private PlayerInputActions _playerInputActions;
-    private Player _player;
+
+    private Movement _movement;
 
     private void Awake()
     {
-        _player = GetComponentInParent<Player>();
         _playerInputActions = new PlayerInputActions();
+        _movement = GetComponent<Movement>();
     }
     
     private void OnEnable()
@@ -22,7 +23,7 @@ public class PlayerInputManager : MonoBehaviour
         Movement = _playerInputActions.Player.Movement;
         Movement.Enable();
 
-        _playerInputActions.Player.Jump.performed += _player.Core.Movement.Jump;
+        _playerInputActions.Player.Jump.performed += _movement.Jump;
         _playerInputActions.Player.Jump.Enable();
     }
     
