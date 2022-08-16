@@ -19,12 +19,30 @@ public class StateMachine : MonoBehaviour
         WalkState = new WalkState();
         IdleState = new IdleState();
         JumpState = new JumpState();
-        
-        _currentState = IdleState;
+
+        InitializeStateMachine();
     }
 
+    private void InitializeStateMachine()
+    {
+        _currentState = IdleState;
+        _currentState.Enter(_player);
+    }
+
+    private void ChangeState(IState newState)
+    {
+        _currentState.Exit(_player);
+        _currentState = newState;
+        _currentState.Enter(_player);
+    }
+    
     private void Update()
     {
-        _currentState = _currentState.DoState(_player);
+        var returnState = _currentState.DoState(_player);
+
+        if (returnState == _currentState)
+            return;
+        
+        ChangeState(returnState);
     }
 }

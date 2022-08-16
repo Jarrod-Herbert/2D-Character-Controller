@@ -5,4 +5,9 @@ using UnityEngine;
 public interface IState
 {
     IState DoState(Player player);
+
+    void Enter(Player player);
+
+    void Exit(Player player);
+
 }

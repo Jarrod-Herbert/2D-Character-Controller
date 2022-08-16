@@ -8,4 +8,14 @@ public class JumpState : IState
     {
         throw new System.NotImplementedException();
     }
+
+    public void Enter(Player player)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Exit(Player player)
+    {
+        throw new System.NotImplementedException();
+    }
 }
