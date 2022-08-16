@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
-    public Vector2 MovementInput => _playerInputActions.Player.Movement.ReadValue<Vector2>();
+    public Vector2 Movement => _playerInputActions.Player.Movement.ReadValue<Vector2>();
 
     private PlayerInputActions _playerInputActions;
 

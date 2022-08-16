@@ -19,6 +19,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement.MoveHorizontal(InputManager.MovementInput.x);
+        Movement.MoveHorizontal(InputManager.Movement.x);
     }
 }
