@@ -17,6 +17,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement.MoveHorizontal((int) InputManager.Movement.ReadValue<Vector2>().x);
+        Movement.MoveHorizontal(InputManager.MovementInput.x);
     }
 }

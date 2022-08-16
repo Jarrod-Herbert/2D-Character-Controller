@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
-    public InputAction Movement { get; private set; }
-    
+    public Vector2 MovementInput => _playerInputActions.Player.Movement.ReadValue<Vector2>();
+
     private PlayerInputActions _playerInputActions;
 
     private Movement _movement;
@@ -20,8 +20,7 @@ public class PlayerInputManager : MonoBehaviour
     
     private void OnEnable()
     {
-        Movement = _playerInputActions.Player.Movement;
-        Movement.Enable();
+        _playerInputActions.Player.Movement.Enable();
 
         _playerInputActions.Player.Jump.performed += _movement.Jump;
         _playerInputActions.Player.Jump.Enable();
@@ -29,7 +28,7 @@ public class PlayerInputManager : MonoBehaviour
     
     private void OnDisable()
     {
-        Movement.Disable();
+        _playerInputActions.Player.Movement.Disable();
         _playerInputActions.Player.Jump .Disable();
     }
 }

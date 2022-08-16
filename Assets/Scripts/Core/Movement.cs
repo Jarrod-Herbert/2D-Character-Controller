@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
         _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y + _jumpForce);
     }
 
-    public void MoveHorizontal(int direction)
+    public void MoveHorizontal(float direction)
     {
         _rb.velocity = new Vector2(direction * _moveSpeed, _rb.velocity.y);
     }
