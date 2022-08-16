@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public StateMachine StateMachine { get; private set; }
     public Animator Animator { get; private set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
+
+    private int _facingDirection = 1;
     
     private void Awake()
     {
@@ -21,5 +23,21 @@ public class Player : MonoBehaviour
         StateMachine = GetComponent<StateMachine>();
         Animator = GetComponent<Animator>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        CheckIfShouldFlipSprite(InputManager.Movement.normalized.x);
+    }
+
+    private void CheckIfShouldFlipSprite(float normalizedX)
+    {
+        if (normalizedX != 0 && normalizedX != _facingDirection) Flip();
+    }
+
+    private void Flip()
+    {
+        _facingDirection *= -1;
+        SpriteRenderer.flipX = !SpriteRenderer.flipX;
     }
 }
