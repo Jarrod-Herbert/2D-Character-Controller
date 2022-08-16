@@ -25,4 +25,11 @@ public class Movement : MonoBehaviour
     {
         _rb.velocity = new Vector2(direction * _moveSpeed, _rb.velocity.y);
     }
+
+    public float XVelocity => _rb.velocity.x;
+
+    public void SetVelocityZero()
+    {
+        _rb.velocity = Vector2.zero;
+    }
 }

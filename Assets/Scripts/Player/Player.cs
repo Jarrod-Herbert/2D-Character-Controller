@@ -9,16 +9,13 @@ public class Player : MonoBehaviour
     public PlayerInputManager InputManager { get; private set; }
     public Movement Movement { get; private set; }
     public Sensors Sensors { get; private set;  }
+    public StateMachine StateMachine { get; private set; }
     
     private void Awake()
     {
         InputManager = GetComponent<PlayerInputManager>();
         Movement = GetComponent<Movement>();
         Sensors = GetComponent<Sensors>();
-    }
-
-    private void FixedUpdate()
-    {
-        Movement.MoveHorizontal(InputManager.Movement.x);
+        StateMachine = GetComponent<StateMachine>();
     }
 }
