@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
 {
     public PlayerInputManager InputManager { get; private set; }
     public Movement Movement { get; private set; }
+    public Sensors Sensors { get; private set;  }
     
     private void Awake()
     {
         InputManager = GetComponent<PlayerInputManager>();
         Movement = GetComponent<Movement>();
+        Sensors = GetComponent<Sensors>();
     }
 
     private void FixedUpdate()
