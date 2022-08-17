@@ -132,14 +132,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 95549400}
-  - component: {fileID: 95549399}
-  - component: {fileID: 95549402}
-  - component: {fileID: 95549401}
   - component: {fileID: 95549403}
   - component: {fileID: 95549404}
   - component: {fileID: 95549405}
   - component: {fileID: 95549406}
   - component: {fileID: 95549407}
+  - component: {fileID: 95549399}
+  - component: {fileID: 95549402}
+  - component: {fileID: 95549401}
   - component: {fileID: 95549408}
   m_Layer: 0
   m_Name: Player
@@ -208,7 +208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95549398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.016, y: -0.064, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c4e982346764703afd1b7916ffe9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 10
+  _jumpForce: 5
   _moveSpeed: 4
 --- !u!114 &95549406
 MonoBehaviour:

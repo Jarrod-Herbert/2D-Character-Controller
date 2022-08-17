@@ -23,6 +23,7 @@ public class PlayerInputManager : MonoBehaviour
         _playerInputActions.Player.Movement.Enable();
 
         _playerInputActions.Player.Jump.performed += _movement.Jump;
+        _playerInputActions.Player.Jump.canceled += _movement.ReleaseJump;
         _playerInputActions.Player.Jump.Enable();
     }
     
