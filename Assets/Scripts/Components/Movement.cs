@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     public void ReleaseJump(InputAction.CallbackContext obj)
     {
         if (_rb.velocity.y > 0)
-            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0);
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.3f);
     }
 
     public void MoveHorizontal(float direction)
