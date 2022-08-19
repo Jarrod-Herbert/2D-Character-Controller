@@ -8,7 +8,10 @@ public class IdleState : IState
     
     public IState DoState(Player player)
     {
-        if (player.InputManager.Movement.x != 0)
+        if (player.InputManager.Movement.x != 0 && player.Movement.IsSprinting)
+            return player.StateMachine.RunState;
+        
+        if (player.InputManager.Movement.x != 0 && !player.Movement.IsSprinting)
             return player.StateMachine.WalkState;
         
         else return player.StateMachine.IdleState;

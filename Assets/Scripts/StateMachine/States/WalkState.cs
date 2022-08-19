@@ -13,6 +13,9 @@ public class WalkState : IState
         if (Mathf.Abs(player.Movement.XVelocity) <= 0.01f)
             return player.StateMachine.IdleState;
 
+        if (player.Movement.IsSprinting)
+            return player.StateMachine.RunState;
+
         return player.StateMachine.WalkState;
     }
     

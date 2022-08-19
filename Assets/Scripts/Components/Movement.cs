@@ -7,9 +7,17 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _jumpForce= 10f;
-    [SerializeField] private float _moveSpeed = 3f;
+    [SerializeField] private float _moveSpeed = 2.5f;
+    [SerializeField] private float _runSpeed = 5f;
 
     private Rigidbody2D _rb;
+    
+    public bool IsSprinting
+    {
+        get => _isSprinting;
+    }
+
+    private bool _isSprinting;
 
     private void Awake()
     {
@@ -32,10 +40,17 @@ public class Movement : MonoBehaviour
         _rb.velocity = new Vector2(direction * _moveSpeed, _rb.velocity.y);
     }
 
+    public void RunHorizontal(float direction)
+    {
+        _rb.velocity = new Vector2(direction * _runSpeed, _rb.velocity.y);
+    }
+
     public float XVelocity => _rb.velocity.x;
 
     public void SetVelocityZero()
     {
         _rb.velocity = Vector2.zero;
     }
+
+    public void Sprint(InputAction.CallbackContext obj) => _isSprinting = !_isSprinting;
 }

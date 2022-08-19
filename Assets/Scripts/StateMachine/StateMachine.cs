@@ -11,6 +11,7 @@ public class StateMachine : MonoBehaviour
     public WalkState WalkState;
     public IdleState IdleState;
     public JumpState JumpState;
+    public RunState RunState;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class StateMachine : MonoBehaviour
         WalkState = new WalkState();
         IdleState = new IdleState();
         JumpState = new JumpState();
+        RunState = new RunState();
 
         InitializeStateMachine();
     }
