@@ -301,6 +301,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpForce: 5
   _moveSpeed: 2.5
+  _runSpeed: 5
+  _maxJumps: 1
+  _releaseMult: 0.3
 --- !u!114 &95549406
 MonoBehaviour:
   m_ObjectHideFlags: 0

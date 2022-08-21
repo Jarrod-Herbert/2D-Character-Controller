@@ -11,28 +11,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _runSpeed = 5f;
 
     private Rigidbody2D _rb;
-    
-    public bool IsSprinting
-    {
-        get => _isSprinting;
-    }
-
-    private bool _isSprinting;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-    }
-
-    public void Jump(InputAction.CallbackContext obj)
-    {
-        _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
-    }
-    
-    public void ReleaseJump(InputAction.CallbackContext obj)
-    {
-        if (_rb.velocity.y > 0)
-            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.3f);
+        ResetJumpsRemaining();
     }
 
     public void MoveHorizontal(float direction)
@@ -51,6 +34,45 @@ public class Movement : MonoBehaviour
     {
         _rb.velocity = Vector2.zero;
     }
+    
+    public bool IsSprinting
+    {
+        get => _isSprinting;
+    }
+
+    private bool _isSprinting;
 
     public void Sprint(InputAction.CallbackContext obj) => _isSprinting = !_isSprinting;
+
+    #region Jump
+    
+    [SerializeField] private int _maxJumps = 1;
+    [SerializeField] private float _releaseMult = 0.3f;
+    public int JumpsRemaining { get; private set; }
+    
+    public void ResetJumpsRemaining()
+    {
+        Debug.Log("Resetting Jumps Remaining");
+        JumpsRemaining = _maxJumps;
+    }
+    
+    public void Jump()
+    {
+        _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
+        UseJump();
+    }
+
+    private void UseJump()
+    {
+        Debug.Log("Using jump");
+        JumpsRemaining--;
+    }
+    
+    public void ReleaseJump(InputAction.CallbackContext obj)
+    {
+        if (_rb.velocity.y > 0)
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _releaseMult);
+    }
+    
+    #endregion
 }

@@ -40,4 +40,22 @@ public class Player : MonoBehaviour
         _facingDirection *= -1;
         SpriteRenderer.flipX = !SpriteRenderer.flipX;
     }
+
+    public void AttemptToJump(InputAction.CallbackContext obj)
+    {
+        if (CheckIfCanJump())
+        {
+            Debug.Log("Movement.JumpsRemaining: " + Movement.JumpsRemaining);
+            Movement.Jump();
+        }
+            
+    }
+    
+    public bool CheckIfCanJump()
+    {
+        if (Sensors.IsGrounded || Movement.JumpsRemaining > 0)
+            return true;
+
+        return false;
+    }
 }
