@@ -52,7 +52,6 @@ public class Movement : MonoBehaviour
     
     public void ResetJumpsRemaining()
     {
-        Debug.Log("Resetting Jumps Remaining");
         JumpsRemaining = _maxJumps;
     }
     
@@ -64,7 +63,6 @@ public class Movement : MonoBehaviour
 
     private void UseJump()
     {
-        Debug.Log("Using jump");
         JumpsRemaining--;
     }
     
@@ -72,6 +70,11 @@ public class Movement : MonoBehaviour
     {
         if (_rb.velocity.y > 0)
             _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _releaseMult);
+    }
+
+    public bool AtMaxJumps()
+    {
+        return JumpsRemaining == _maxJumps;
     }
     
     #endregion

@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
     private void Update()
     {
         CheckIfShouldFlipSprite(InputManager.Movement.normalized.x);
+        
+        if (ShouldResetJumps())
+            Movement.ResetJumpsRemaining();
     }
 
     private void CheckIfShouldFlipSprite(float normalizedX)
@@ -48,14 +51,15 @@ public class Player : MonoBehaviour
             Debug.Log("Movement.JumpsRemaining: " + Movement.JumpsRemaining);
             Movement.Jump();
         }
-            
     }
     
     public bool CheckIfCanJump()
     {
-        if (Sensors.IsGrounded || Movement.JumpsRemaining > 0)
-            return true;
+        return Sensors.IsGrounded || (!Sensors.IsGrounded && Movement.JumpsRemaining > 0);
+    }
 
-        return false;
+    private bool ShouldResetJumps()
+    {
+        return Sensors.IsGrounded == true && Movement.AtMaxJumps() == false;
     }
 }
