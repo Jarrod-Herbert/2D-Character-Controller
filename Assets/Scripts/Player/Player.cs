@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
 
     private bool ShouldResetJumps()
     {
-        return Sensors.IsGrounded == true && Movement.AtMaxJumps() == false;
+        return Sensors.IsGrounded && Movement.YVelocity <= 0.1f;
     }
+
+    public bool IsGrounded => Sensors.IsGrounded;
 }

@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
     }
 
     public float XVelocity => _rb.velocity.x;
+    public float YVelocity => _rb.velocity.y;
 
     public void SetVelocityZero()
     {
@@ -48,6 +49,7 @@ public class Movement : MonoBehaviour
     
     [SerializeField] private int _maxJumps = 1;
     [SerializeField] private float _releaseMult = 0.3f;
+    
     public int JumpsRemaining { get; private set; }
     
     public void ResetJumpsRemaining()
