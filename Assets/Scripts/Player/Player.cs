@@ -47,8 +47,9 @@ public class Player : MonoBehaviour
     public void AttemptToJump(InputAction.CallbackContext obj)
     {
         if (!CheckIfCanJump()) return;
+        
         StateMachine.ChangeState(StateMachine.JumpState);
-        Movement.Jump();
+        // Movement.Jump();
     }
     
     public bool CheckIfCanJump()
