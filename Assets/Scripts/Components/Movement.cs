@@ -48,7 +48,6 @@ public class Movement : MonoBehaviour
     #region Jump
     
     [SerializeField] private int _maxJumps = 1;
-    [SerializeField] private float _releaseMult = 0.3f;
     
     public int JumpsRemaining { get; private set; }
     
@@ -66,12 +65,6 @@ public class Movement : MonoBehaviour
     private void UseJump()
     {
         JumpsRemaining--;
-    }
-    
-    public void ReleaseJump(InputAction.CallbackContext obj)
-    {
-        if (_rb.velocity.y > 0)
-            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * _releaseMult);
     }
 
     public bool AtMaxJumps()

@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
     private void CheckIfShouldFlipSprite(float normalizedX)
     {
-        if (normalizedX != 0 && normalizedX != _facingDirection) Flip();
+        if (normalizedX != 0 && (int)normalizedX != _facingDirection) Flip();
     }
 
     private void Flip()
@@ -46,11 +46,9 @@ public class Player : MonoBehaviour
 
     public void AttemptToJump(InputAction.CallbackContext obj)
     {
-        if (CheckIfCanJump())
-        {
-            Debug.Log("Movement.JumpsRemaining: " + Movement.JumpsRemaining);
-            Movement.Jump();
-        }
+        if (!CheckIfCanJump()) return;
+        StateMachine.ChangeState(StateMachine.JumpState);
+        Movement.Jump();
     }
     
     public bool CheckIfCanJump()
@@ -60,7 +58,7 @@ public class Player : MonoBehaviour
 
     private bool ShouldResetJumps()
     {
-        return Sensors.IsGrounded && Movement.YVelocity <= 0.1f;
+        return Sensors.IsGrounded && Movement.YVelocity <= 0.01f;
     }
 
     public bool IsGrounded => Sensors.IsGrounded;

@@ -24,7 +24,6 @@ public class PlayerInputManager : MonoBehaviour
         _playerInputActions.Player.Movement.Enable();
 
         _playerInputActions.Player.Jump.performed += _player.AttemptToJump;
-        _playerInputActions.Player.Jump.canceled += _player.Movement.ReleaseJump;
 
         _playerInputActions.Player.RunStart.performed += _player.Movement.Sprint;
         _playerInputActions.Player.RunFinish.performed += _player.Movement.Sprint;

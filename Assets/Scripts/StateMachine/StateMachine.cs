@@ -12,6 +12,7 @@ public class StateMachine : MonoBehaviour
     public IdleState IdleState;
     public JumpState JumpState;
     public RunState RunState;
+    public InAirState InAirState;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class StateMachine : MonoBehaviour
         IdleState = new IdleState();
         JumpState = new JumpState();
         RunState = new RunState();
+        InAirState = new InAirState();
 
         InitializeStateMachine();
     }
@@ -31,7 +33,7 @@ public class StateMachine : MonoBehaviour
         _currentState.Enter(_player);
     }
 
-    private void ChangeState(IState newState)
+    public void ChangeState(IState newState)
     {
         _currentState.Exit(_player);
         _currentState = newState;

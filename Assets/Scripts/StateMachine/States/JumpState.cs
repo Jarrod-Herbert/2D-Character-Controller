@@ -6,16 +6,15 @@ public class JumpState : IState
 {
     public IState DoState(Player player)
     {
-        throw new System.NotImplementedException();
+        return (player.StateMachine.InAirState);
     }
 
     public void Enter(Player player)
     {
-        throw new System.NotImplementedException();
+        player.Movement.Jump();
     }
 
     public void Exit(Player player)
     {
-        throw new System.NotImplementedException();
     }
 }
