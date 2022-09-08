@@ -13,6 +13,7 @@ public class StateMachine : MonoBehaviour
     public JumpState JumpState;
     public RunState RunState;
     public InAirState InAirState;
+    public LandState LandState;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class StateMachine : MonoBehaviour
         JumpState = new JumpState();
         RunState = new RunState();
         InAirState = new InAirState();
+        LandState = new LandState();
 
         InitializeStateMachine();
     }
