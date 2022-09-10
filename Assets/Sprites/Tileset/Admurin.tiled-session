@@ -1,0 +1,93 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Grassy/testmap.tmx",
+    "expandedProjectPaths": [
+        "Grassy",
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "/Users/jarrodherbert/Documents/GitHub/2D-Character-Controller/Assets/Sprites/Prototype Tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "Grassy/grassy.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Grassy/rule1.tmx": {
+            "scale": 1.136,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 320.42253521126764,
+                "y": 319.5422535211268
+            }
+        },
+        "Grassy/testmap.tmx": {
+            "scale": 1.5935,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 288.67273297772203,
+                "y": 217.1320991528083
+            }
+        },
+        "Prototype Tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/Grassy/grassy.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/Grassy/testmap.tmx": {
+            "scale": 1.1934375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 273.1605132233569,
+                "y": 170.93479968578163
+            }
+        },
+        "Tilesets/Prototype Tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "grassy.tsx": {
+            "scaleInDock": 1
+        },
+        "testmap.tmx": {
+            "scale": 1.1934375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 240.48180151872216,
+                "y": 160.04189578423671
+            }
+        }
+    },
+    "last.imagePath": "/Users/jarrodherbert/Documents/GitHub/2D-Character-Controller/Assets/Sprites/Tileset",
+    "map.height": 40,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 40,
+    "openFiles": [
+        "Grassy/testmap.tmx"
+    ],
+    "project": "Admurin.tiled-project",
+    "recentFiles": [
+        "Grassy/testmap.tmx",
+        "Prototype Tiles.tsx",
+        "Grassy/rule1.tmx",
+        "Grassy/grassy.tsx",
+        "testmap.tmx",
+        "Grassy/testmap.tmx",
+        "Prototype Tiles.tsx",
+        "Tilesets/Grassy/testmap.tmx",
+        "Tilesets/Grassy/grassy.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
