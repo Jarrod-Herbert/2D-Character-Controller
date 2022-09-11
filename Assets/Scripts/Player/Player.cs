@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public Movement Movement { get; private set; }
     public Sensors Sensors { get; private set;  }
     public StateMachine StateMachine { get; private set; }
-    public Animator Animator { get; private set; }
+    public AnimationManager AnimManager { get; private set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
 
     private int _facingDirection = 1;
@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         Movement = GetComponent<Movement>();
         Sensors = GetComponent<Sensors>();
         StateMachine = GetComponent<StateMachine>();
-        Animator = GetComponent<Animator>();
+        AnimManager = GetComponent<AnimationManager>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 

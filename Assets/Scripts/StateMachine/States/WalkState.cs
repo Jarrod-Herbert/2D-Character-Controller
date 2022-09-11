@@ -20,8 +20,8 @@ public class WalkState : IState
     }
     
     public void Enter(Player player)
-    {
-        player.Animator.CrossFade(Walk, 0,0);
+    { 
+        player.AnimManager.PlayAnimation(Walk);
     }
 
     public void Exit(Player player)

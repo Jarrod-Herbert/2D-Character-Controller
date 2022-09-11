@@ -21,7 +21,7 @@ public class RunState : IState
 
     public void Enter(Player player)
     {
-        player.Animator.CrossFade(Run, 0,0);
+        player.AnimManager.PlayAnimation(Run);
     }
 
     public void Exit(Player player)

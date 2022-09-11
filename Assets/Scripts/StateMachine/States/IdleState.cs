@@ -19,7 +19,7 @@ public class IdleState : IState
 
     public void Enter(Player player)
     {
-        player.Animator.CrossFade(Idle, 0,0);
+        player.AnimManager.PlayAnimation(Idle);
     }
 
     public void Exit(Player player)

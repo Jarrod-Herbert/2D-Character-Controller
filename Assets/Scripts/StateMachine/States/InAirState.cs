@@ -8,8 +8,6 @@ public class InAirState : IState
     
     public IState DoState(Player player)
     {
-        player.Animator.SetFloat("yVelocity", player.Movement.YVelocity);
-
         if (player.IsGrounded && player.Movement.YVelocity < 0.05f)
             return player.StateMachine.LandState;
 
@@ -18,12 +16,10 @@ public class InAirState : IState
 
     public void Enter(Player player)
     {
-        player.Animator.CrossFade(InAir, 0, 0);
-        Debug.Log("Entered in air state");
+        player.AnimManager.PlayAnimation(InAir);
     }
 
     public void Exit(Player player)
     {
-        Debug.Log("Exiting inAir state");
     }
 }

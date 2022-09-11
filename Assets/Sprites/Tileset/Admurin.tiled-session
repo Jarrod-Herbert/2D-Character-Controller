@@ -5,8 +5,8 @@
     },
     "activeFile": "Grassy/testmap.tmx",
     "expandedProjectPaths": [
-        "Grassy",
-        "."
+        ".",
+        "Grassy"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -29,8 +29,8 @@
             "scale": 1.5935,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 288.67273297772203,
-                "y": 217.1320991528083
+                "x": 279.887041104487,
+                "y": 161.28020081581428
             }
         },
         "Prototype Tiles.tsx": {
@@ -71,17 +71,16 @@
     "map.tileWidth": 16,
     "map.width": 40,
     "openFiles": [
-        "Grassy/testmap.tmx"
+        "Grassy/testmap.tmx",
+        "Prototype Tiles.tsx"
     ],
     "project": "Admurin.tiled-project",
     "recentFiles": [
-        "Grassy/testmap.tmx",
         "Prototype Tiles.tsx",
+        "Grassy/testmap.tmx",
         "Grassy/rule1.tmx",
         "Grassy/grassy.tsx",
         "testmap.tmx",
-        "Grassy/testmap.tmx",
-        "Prototype Tiles.tsx",
         "Tilesets/Grassy/testmap.tmx",
         "Tilesets/Grassy/grassy.tsx"
     ],

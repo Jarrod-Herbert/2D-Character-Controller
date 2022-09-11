@@ -8,15 +8,14 @@ public class JumpState : IState
     
     public IState DoState(Player player)
     {
-        player.Animator.SetFloat("yVelocity", player.Movement.YVelocity);
         return (player.StateMachine.InAirState);
     }
 
     public void Enter(Player player)
     {
         player.Movement.Jump();
-        player.Animator.CrossFade(InAir, 0, 0);
-        
+        player.AnimManager.PlayAnimation(InAir);
+
     }
 
     public void Exit(Player player)

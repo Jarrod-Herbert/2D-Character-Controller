@@ -14,7 +14,6 @@ public class LandState : IState
         if (counter < exitAfter)
         {
             counter++;
-            Debug.Log(counter);
             return player.StateMachine.LandState;
         }
 
@@ -24,12 +23,10 @@ public class LandState : IState
     public void Enter(Player player)
     {
         counter = 0;
-        player.Animator.Play(Land);
-        Debug.Log("enter land state");
+        player.AnimManager.PlayAnimation(Land);
     }
 
     public void Exit(Player player)
     {
-        Debug.Log("exit land state");
     }
 }
