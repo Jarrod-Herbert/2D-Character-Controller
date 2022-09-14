@@ -8,13 +8,15 @@ public class Player : MonoBehaviour
 {
     public PlayerInputManager InputManager { get; private set; }
     public Movement Movement { get; private set; }
-    public Sensors Sensors { get; private set;  }
+    public Sensors Sensors { get; private set; }
     public StateMachine StateMachine { get; private set; }
     public AnimationManager AnimManager { get; private set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
+    
+    public bool IsGrounded => Sensors.IsGrounded;
 
     private int _facingDirection = 1;
-    
+
     private void Awake()
     {
         InputManager = GetComponent<PlayerInputManager>();
@@ -28,14 +30,14 @@ public class Player : MonoBehaviour
     private void Update()
     {
         CheckIfShouldFlipSprite(InputManager.Movement.normalized.x);
-        
+
         if (ShouldResetJumps())
             Movement.ResetJumpsRemaining();
     }
 
     private void CheckIfShouldFlipSprite(float normalizedX)
     {
-        if (normalizedX != 0 && (int)normalizedX != _facingDirection) Flip();
+        if (normalizedX != 0 && (int) normalizedX != _facingDirection) Flip();
     }
 
     private void Flip()
@@ -47,20 +49,19 @@ public class Player : MonoBehaviour
     public void AttemptToJump(InputAction.CallbackContext obj)
     {
         if (!CheckIfCanJump()) return;
-        
+
         StateMachine.ChangeState(StateMachine.JumpState);
         // Movement.Jump();
     }
-    
+
     public bool CheckIfCanJump()
     {
-        return Sensors.IsGrounded || (!Sensors.IsGrounded && Movement.JumpsRemaining > 0);
+        return IsGrounded || (!IsGrounded && Movement.JumpsRemaining > 0);
     }
 
     private bool ShouldResetJumps()
     {
-        return Sensors.IsGrounded && Movement.YVelocity <= 0.01f;
+        return IsGrounded && Movement.YVelocity <= 0.01f;
     }
 
-    public bool IsGrounded => Sensors.IsGrounded;
 }
