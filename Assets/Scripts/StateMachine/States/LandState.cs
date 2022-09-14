@@ -9,7 +9,12 @@ public class LandState : IState
 
     public IState DoState(Player player)
     {
-        if (isAnimationFinished)
+        if (isAnimationFinished && player.InputManager.Movement.x != 0)
+        {
+            return player.StateMachine.WalkState;
+        }
+
+        if (isAnimationFinished && player.InputManager.Movement.x == 0)
         {
             return player.StateMachine.IdleState;
         }
