@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _jumpForce= 10f;
     [SerializeField] private float _moveSpeed = 2.5f;
     [SerializeField] private float _runSpeed = 5f;
+    [SerializeField] private float _maxFallSpeed = 12f;
 
     private Rigidbody2D _rb;
 
@@ -16,6 +18,17 @@ public class Movement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         ResetJumpsRemaining();
+    }
+
+    private void Update()
+    {
+        if (_rb.velocity.y < -_maxFallSpeed)
+            ClampFallSpeed();
+    }
+
+    private void ClampFallSpeed()
+    {
+        _rb.velocity = new Vector2(_rb.velocity.x, -_maxFallSpeed);
     }
 
     public void MoveHorizontal(float direction)
