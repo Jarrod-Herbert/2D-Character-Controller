@@ -8,24 +8,16 @@ public class StateMachine : MonoBehaviour
     private IState _currentState;
     private Player _player;
 
-    public WalkState WalkState;
-    public IdleState IdleState;
-    public JumpState JumpState;
-    public RunState RunState;
-    public InAirState InAirState;
-    public LandState LandState;
+    public readonly WalkState WalkState = new();
+    public readonly IdleState IdleState = new();
+    public readonly JumpState JumpState = new();
+    public readonly RunState RunState = new();
+    public readonly InAirState InAirState = new();
+    public readonly LandState LandState = new();
 
     private void Awake()
     {
         _player = GetComponent<Player>();
-        
-        WalkState = new WalkState();
-        IdleState = new IdleState();
-        JumpState = new JumpState();
-        RunState = new RunState();
-        InAirState = new InAirState();
-        LandState = new LandState();
-        
     }
 
     private void Start()
