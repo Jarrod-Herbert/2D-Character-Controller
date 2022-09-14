@@ -5,28 +5,35 @@ using UnityEngine;
 public class LandState : IState
 {
     private readonly int Land = Animator.StringToHash("Land");
-    
-    private int exitAfter = 44;
-    private int counter;
-    
+    private bool isAnimationFinished;
+
     public IState DoState(Player player)
     {
-        if (counter < exitAfter)
+        if (isAnimationFinished)
         {
-            counter++;
-            return player.StateMachine.LandState;
+            return player.StateMachine.IdleState;
         }
 
-        return player.StateMachine.IdleState;
+        return player.StateMachine.LandState;
     }
 
     public void Enter(Player player)
     {
-        counter = 0;
+        isAnimationFinished = false;
         player.AnimManager.PlayAnimation(Land);
     }
 
     public void Exit(Player player)
     {
+    }
+
+    public void AnimationTrigger()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AnimationFinishTrigger()
+    {
+        isAnimationFinished = true;
     }
 }

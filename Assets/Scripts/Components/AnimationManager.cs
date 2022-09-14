@@ -23,4 +23,10 @@ public class AnimationManager : MonoBehaviour
     {
         _animator.Play(animID);
     }
+
+    public void AnimationTriggerFinish()
+    {
+        Debug.Log("Animation Trigger Finish");
+        _player.StateMachine.AnimationFinishTrigger();
+    }
 }

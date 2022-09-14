@@ -47,4 +47,9 @@ public class StateMachine : MonoBehaviour
         
         ChangeState(returnState);
     }
+
+    public void AnimationFinishTrigger()
+    {
+        _currentState.AnimationFinishTrigger();
+    }
 }

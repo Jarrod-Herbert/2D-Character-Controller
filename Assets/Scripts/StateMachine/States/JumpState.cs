@@ -21,4 +21,14 @@ public class JumpState : IState
     public void Exit(Player player)
     {
     }
+
+    public void AnimationTrigger()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AnimationFinishTrigger()
+    {
+        throw new System.NotImplementedException();
+    }
 }

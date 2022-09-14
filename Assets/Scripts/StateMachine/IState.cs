@@ -10,4 +10,8 @@ public interface IState
 
     void Exit(Player player);
 
+    void AnimationTrigger();
+
+    void AnimationFinishTrigger();
+
 }

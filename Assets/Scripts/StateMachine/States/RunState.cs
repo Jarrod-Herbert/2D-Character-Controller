@@ -28,4 +28,14 @@ public class RunState : IState
     {
         // throw new System.NotImplementedException();
     }
+
+    public void AnimationTrigger()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AnimationFinishTrigger()
+    {
+        throw new System.NotImplementedException();
+    }
 }
