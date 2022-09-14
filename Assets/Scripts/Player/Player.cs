@@ -18,11 +18,11 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         InputManager = GetComponent<PlayerInputManager>();
+        AnimManager = GetComponent<AnimationManager>();
         Movement = GetComponent<Movement>();
         Sensors = GetComponent<Sensors>();
-        StateMachine = GetComponent<StateMachine>();
-        AnimManager = GetComponent<AnimationManager>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        StateMachine = GetComponent<StateMachine>();
     }
 
     private void Update()

@@ -25,7 +25,11 @@ public class StateMachine : MonoBehaviour
         RunState = new RunState();
         InAirState = new InAirState();
         LandState = new LandState();
+        
+    }
 
+    private void Start()
+    {
         InitializeStateMachine();
     }
 
