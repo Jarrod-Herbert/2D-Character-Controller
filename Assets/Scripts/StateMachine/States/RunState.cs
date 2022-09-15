@@ -9,12 +9,18 @@ public class RunState : IState
     public IState DoState(Player player)
     {
         player.Movement.RunHorizontal(player.InputManager.Movement.x);
+        
+        if (player.InputManager.JumpInput && player.CheckIfCanJump())
+            return player.StateMachine.JumpState;
 
         if (!player.Movement.IsSprinting && player.InputManager.Movement.x != 0)
             return player.StateMachine.WalkState;
         
         if (Mathf.Abs(player.Movement.XVelocity) <= 0.01f)
             return player.StateMachine.IdleState;
+        
+        if (!player.IsGrounded)
+            return player.StateMachine.InAirState;
 
         return player.StateMachine.RunState;
     }

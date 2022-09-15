@@ -17,6 +17,9 @@ public class IdleState : IState
         if (player.InputManager.Movement.x != 0 && !player.Movement.IsSprinting)
             return player.StateMachine.WalkState;
         
+        if (!player.IsGrounded)
+            return player.StateMachine.InAirState;
+        
         return player.StateMachine.IdleState;
     }
 

@@ -9,16 +9,17 @@ public class LandState : IState
 
     public IState DoState(Player player)
     {
-        if (player.InputManager.JumpInput)
+        if (player.InputManager.JumpInput && player.CheckIfCanJump())
             return player.StateMachine.JumpState;
         
         if (player.InputManager.Movement.x != 0)
             return player.StateMachine.WalkState;
 
         if (isAnimationFinished && player.InputManager.Movement.x == 0)
-        {
             return player.StateMachine.IdleState;
-        }
+
+        if (!player.IsGrounded)
+            return player.StateMachine.InAirState;
 
         return player.StateMachine.LandState;
     }

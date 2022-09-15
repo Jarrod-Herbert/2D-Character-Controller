@@ -280,7 +280,7 @@ MonoBehaviour:
   _moveSpeed: 4
   _runSpeed: 7
   _maxFallSpeed: 12
-  _maxJumps: 2
+  _maxJumps: 1
 --- !u!114 &95549406
 MonoBehaviour:
   m_ObjectHideFlags: 0

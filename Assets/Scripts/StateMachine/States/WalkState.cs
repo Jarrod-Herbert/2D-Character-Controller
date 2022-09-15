@@ -10,11 +10,17 @@ public class WalkState : IState
     {
         player.Movement.MoveHorizontal(player.InputManager.Movement.x);
 
+        if (player.InputManager.JumpInput && player.CheckIfCanJump())
+            return player.StateMachine.JumpState;
+        
         if (Mathf.Abs(player.Movement.XVelocity) <= 0.01f)
             return player.StateMachine.IdleState;
 
         if (player.Movement.IsSprinting)
             return player.StateMachine.RunState;
+
+        if (!player.IsGrounded)
+            return player.StateMachine.InAirState;
 
         return player.StateMachine.WalkState;
     }
