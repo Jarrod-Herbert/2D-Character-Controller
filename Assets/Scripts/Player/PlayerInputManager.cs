@@ -23,19 +23,26 @@ public class PlayerInputManager : MonoBehaviour
     {
         _playerInputActions.Player.Movement.Enable();
 
-        _playerInputActions.Player.Jump.performed += _player.AttemptToJump;
+        _playerInputActions.Player.Jump.started += Jump;
 
         _playerInputActions.Player.RunStart.performed += _player.Movement.Sprint;
         _playerInputActions.Player.RunFinish.performed += _player.Movement.Sprint;
         
         _playerInputActions.Player.Enable();
     }
-    
+
     private void OnDisable()
     {
         _playerInputActions.Player.Movement.Disable();
-        _playerInputActions.Player.Jump .Disable();
+        _playerInputActions.Player.Jump.Disable();
         _playerInputActions.Player.RunStart.Disable();
         _playerInputActions.Player.RunFinish.Disable();
     }
+
+    private void Jump(InputAction.CallbackContext context)
+    {
+        JumpInput = true;
+    }
+
+    public void UseJumpInput() => JumpInput = false;
 }

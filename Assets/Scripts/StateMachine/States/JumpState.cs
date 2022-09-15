@@ -15,7 +15,7 @@ public class JumpState : IState
     {
         player.Movement.Jump();
         player.AnimManager.PlayAnimation(InAir);
-
+        player.InputManager.UseJumpInput();
     }
 
     public void Exit(Player player)

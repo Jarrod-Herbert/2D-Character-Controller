@@ -8,6 +8,9 @@ public class IdleState : IState
     
     public IState DoState(Player player)
     {
+        if (player.InputManager.JumpInput && player.CheckIfCanJump())
+            return player.StateMachine.JumpState;
+        
         if (player.InputManager.Movement.x != 0 && player.Movement.IsSprinting)
             return player.StateMachine.RunState;
         

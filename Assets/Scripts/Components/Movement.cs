@@ -84,6 +84,6 @@ public class Movement : MonoBehaviour
     {
         return JumpsRemaining == _maxJumps;
     }
-    
+
     #endregion
 }
