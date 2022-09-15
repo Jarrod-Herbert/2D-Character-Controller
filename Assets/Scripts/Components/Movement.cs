@@ -40,13 +40,18 @@ public class Movement : MonoBehaviour
     {
         _rb.velocity = new Vector2(direction * _runSpeed, _rb.velocity.y);
     }
-
+    
     public float XVelocity => _rb.velocity.x;
     public float YVelocity => _rb.velocity.y;
 
     public void SetVelocityZero()
     {
         _rb.velocity = Vector2.zero;
+    }
+
+    public void AddVelocity(Vector2 amount)
+    {
+        _rb.velocity += amount;
     }
     
     public bool IsSprinting

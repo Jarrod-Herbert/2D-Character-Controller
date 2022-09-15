@@ -7,14 +7,25 @@ public class InAirState : IState
     private readonly int InAir = Animator.StringToHash("InAir");
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
-    
+    private float _fallMultipler = 2.5f;
+
     public IState DoState(Player player)
     {
-        if (coyoteTimeCounter > 0 && player.InputManager.JumpInput && player.CheckIfCanJump())
+        player.Movement.MoveHorizontal(player.InputManager.Movement.x);
+
+        if (coyoteTimeCounter > 0 && player.InputManager.JumpInput)
+            return player.StateMachine.JumpState;
+        
+        if (player.Movement.YVelocity < 0)
+        {
+            Vector2 amount = Vector2.up * (Physics2D.gravity.y * (_fallMultipler - 1) * Time.deltaTime);
+            player.Movement.AddVelocity(amount);
+        }
+        
+        if (player.InputManager.JumpInput && player.CheckIfCanJump())
             return player.StateMachine.JumpState;
 
         coyoteTimeCounter -= Time.deltaTime;
-        Debug.Log($"CoyoteTimer {coyoteTimeCounter}");
 
         if (player.IsGrounded && player.Movement.YVelocity < 0.05f)
             return player.StateMachine.LandState;
