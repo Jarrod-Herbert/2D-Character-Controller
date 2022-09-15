@@ -17,12 +17,13 @@ public class IdleState : IState
         if (player.InputManager.Movement.x != 0 && !player.Movement.IsSprinting)
             return player.StateMachine.WalkState;
         
-        else return player.StateMachine.IdleState;
+        return player.StateMachine.IdleState;
     }
 
     public void Enter(Player player)
     {
         player.AnimManager.PlayAnimation(Idle);
+        player.Movement.SetVelocityZero();
     }
 
     public void Exit(Player player)

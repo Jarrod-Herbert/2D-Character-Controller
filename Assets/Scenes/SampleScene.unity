@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41267c55726094828b70701feb413a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputBufferDuration: 0.2
   JumpInput: 0
 --- !u!114 &95549405
 MonoBehaviour:

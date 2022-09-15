@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputManager : MonoBehaviour
 {
+    [SerializeField] private float _inputBufferDuration = 0.2f;
     public Vector2 Movement => _playerInputActions.Player.Movement.ReadValue<Vector2>();
     public bool JumpInput;
 
@@ -42,7 +43,17 @@ public class PlayerInputManager : MonoBehaviour
     private void Jump(InputAction.CallbackContext context)
     {
         JumpInput = true;
+        StartCoroutine(CancelJumpInput());
     }
 
-    public void UseJumpInput() => JumpInput = false;
+    private IEnumerator CancelJumpInput()
+    {
+        yield return new WaitForSeconds(_inputBufferDuration);
+        JumpInput = false;
+    }
+
+    public void UseJumpInput()
+    {
+        JumpInput = false;
+    }
 }
