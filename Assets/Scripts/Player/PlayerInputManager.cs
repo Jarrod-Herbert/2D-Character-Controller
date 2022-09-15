@@ -26,8 +26,8 @@ public class PlayerInputManager : MonoBehaviour
 
         _playerInputActions.Player.Jump.started += Jump;
 
-        _playerInputActions.Player.RunStart.performed += _player.Movement.Sprint;
-        _playerInputActions.Player.RunFinish.performed += _player.Movement.Sprint;
+        _playerInputActions.Player.WalkStart.performed += _player.Movement.Walk;
+        _playerInputActions.Player.WalkFinish.performed += _player.Movement.Walk;
         
         _playerInputActions.Player.Enable();
     }
@@ -36,8 +36,8 @@ public class PlayerInputManager : MonoBehaviour
     {
         _playerInputActions.Player.Movement.Disable();
         _playerInputActions.Player.Jump.Disable();
-        _playerInputActions.Player.RunStart.Disable();
-        _playerInputActions.Player.RunFinish.Disable();
+        _playerInputActions.Player.WalkStart.Disable();
+        _playerInputActions.Player.WalkFinish.Disable();
     }
 
     private void Jump(InputAction.CallbackContext context)

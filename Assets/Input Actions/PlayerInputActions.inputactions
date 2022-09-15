@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RunStart",
+                    "name": "WalkStart",
                     "type": "Button",
                     "id": "61692db9-0d01-4284-9ccb-c4266dd4e47d",
                     "expectedControlType": "Button",
@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RunFinish",
+                    "name": "WalkFinish",
                     "type": "Button",
                     "id": "9efac9b9-3d89-442e-bb6f-860484995ac4",
                     "expectedControlType": "Button",
@@ -116,7 +116,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "RunStart",
+                    "action": "WalkStart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -127,7 +127,7 @@
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "RunFinish",
+                    "action": "WalkFinish",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

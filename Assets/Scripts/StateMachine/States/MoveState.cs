@@ -2,37 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RunState : IState
+public class MoveState : IState
 {
-    private readonly int Run = Animator.StringToHash("Run");
-    
+    private readonly int Move = Animator.StringToHash("Move");
+
     public IState DoState(Player player)
     {
-        player.Movement.RunHorizontal(player.InputManager.Movement.x);
-        
+        player.Movement.MoveHorizontal(player.InputManager.Movement.x);
+
         if (player.InputManager.JumpInput && player.CheckIfCanJump())
             return player.StateMachine.JumpState;
-
-        if (!player.Movement.IsSprinting && player.InputManager.Movement.x != 0)
-            return player.StateMachine.WalkState;
         
         if (Mathf.Abs(player.Movement.XVelocity) <= 0.01f)
             return player.StateMachine.IdleState;
-        
+
+        if (player.Movement.IsWalking)
+            return player.StateMachine.WalkState;
+
         if (!player.IsGrounded)
             return player.StateMachine.InAirState;
 
-        return player.StateMachine.RunState;
+        return player.StateMachine.MoveState;
     }
-
+    
     public void Enter(Player player)
-    {
-        player.AnimManager.PlayAnimation(Run);
+    { 
+        player.AnimManager.PlayAnimation(Move);
     }
 
     public void Exit(Player player)
     {
-        // throw new System.NotImplementedException();
     }
 
     public void AnimationTrigger()

@@ -8,8 +8,8 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _jumpForce= 10f;
-    [SerializeField] private float _moveSpeed = 2.5f;
-    [SerializeField] private float _runSpeed = 5f;
+    [SerializeField] private float _moveSpeed = 9f;
+    [SerializeField] private float _walkSpeed = 5f;
     [SerializeField] private float _maxFallSpeed = 12f;
 
     private Rigidbody2D _rb;
@@ -36,9 +36,9 @@ public class Movement : MonoBehaviour
         _rb.velocity = new Vector2(direction * _moveSpeed, _rb.velocity.y);
     }
 
-    public void RunHorizontal(float direction)
+    public void WalkHorizontal(float direction)
     {
-        _rb.velocity = new Vector2(direction * _runSpeed, _rb.velocity.y);
+        _rb.velocity = new Vector2(direction * _walkSpeed, _rb.velocity.y);
     }
     
     public float XVelocity => _rb.velocity.x;
@@ -54,14 +54,14 @@ public class Movement : MonoBehaviour
         _rb.velocity += amount;
     }
     
-    public bool IsSprinting
+    public bool IsWalking
     {
-        get => _isSprinting;
+        get => _isWalking;
     }
 
-    private bool _isSprinting;
+    private bool _isWalking;
 
-    public void Sprint(InputAction.CallbackContext obj) => _isSprinting = !_isSprinting;
+    public void Walk(InputAction.CallbackContext obj) => _isWalking = !_isWalking;
 
     #region Jump
     

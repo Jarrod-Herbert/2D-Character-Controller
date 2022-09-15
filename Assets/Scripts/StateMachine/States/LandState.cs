@@ -13,7 +13,7 @@ public class LandState : IState
             return player.StateMachine.JumpState;
         
         if (player.InputManager.Movement.x != 0)
-            return player.StateMachine.WalkState;
+            return player.StateMachine.MoveState;
 
         if (isAnimationFinished && player.InputManager.Movement.x == 0)
             return player.StateMachine.IdleState;

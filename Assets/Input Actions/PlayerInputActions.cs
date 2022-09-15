@@ -46,7 +46,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""RunStart"",
+                    ""name"": ""WalkStart"",
                     ""type"": ""Button"",
                     ""id"": ""61692db9-0d01-4284-9ccb-c4266dd4e47d"",
                     ""expectedControlType"": ""Button"",
@@ -55,7 +55,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RunFinish"",
+                    ""name"": ""WalkFinish"",
                     ""type"": ""Button"",
                     ""id"": ""9efac9b9-3d89-442e-bb6f-860484995ac4"",
                     ""expectedControlType"": ""Button"",
@@ -138,7 +138,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""RunStart"",
+                    ""action"": ""WalkStart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -149,7 +149,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""RunFinish"",
+                    ""action"": ""WalkFinish"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -168,8 +168,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_RunStart = m_Player.FindAction("RunStart", throwIfNotFound: true);
-        m_Player_RunFinish = m_Player.FindAction("RunFinish", throwIfNotFound: true);
+        m_Player_WalkStart = m_Player.FindAction("WalkStart", throwIfNotFound: true);
+        m_Player_WalkFinish = m_Player.FindAction("WalkFinish", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -231,16 +231,16 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_RunStart;
-    private readonly InputAction m_Player_RunFinish;
+    private readonly InputAction m_Player_WalkStart;
+    private readonly InputAction m_Player_WalkFinish;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @RunStart => m_Wrapper.m_Player_RunStart;
-        public InputAction @RunFinish => m_Wrapper.m_Player_RunFinish;
+        public InputAction @WalkStart => m_Wrapper.m_Player_WalkStart;
+        public InputAction @WalkFinish => m_Wrapper.m_Player_WalkFinish;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,12 +256,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @RunStart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunStart;
-                @RunStart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunStart;
-                @RunStart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunStart;
-                @RunFinish.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunFinish;
-                @RunFinish.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunFinish;
-                @RunFinish.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunFinish;
+                @WalkStart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkStart;
+                @WalkStart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkStart;
+                @WalkStart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkStart;
+                @WalkFinish.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkFinish;
+                @WalkFinish.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkFinish;
+                @WalkFinish.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnWalkFinish;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,12 +272,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @RunStart.started += instance.OnRunStart;
-                @RunStart.performed += instance.OnRunStart;
-                @RunStart.canceled += instance.OnRunStart;
-                @RunFinish.started += instance.OnRunFinish;
-                @RunFinish.performed += instance.OnRunFinish;
-                @RunFinish.canceled += instance.OnRunFinish;
+                @WalkStart.started += instance.OnWalkStart;
+                @WalkStart.performed += instance.OnWalkStart;
+                @WalkStart.canceled += instance.OnWalkStart;
+                @WalkFinish.started += instance.OnWalkFinish;
+                @WalkFinish.performed += instance.OnWalkFinish;
+                @WalkFinish.canceled += instance.OnWalkFinish;
             }
         }
     }
@@ -295,7 +295,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnRunStart(InputAction.CallbackContext context);
-        void OnRunFinish(InputAction.CallbackContext context);
+        void OnWalkStart(InputAction.CallbackContext context);
+        void OnWalkFinish(InputAction.CallbackContext context);
     }
 }

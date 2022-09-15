@@ -8,10 +8,10 @@ public class StateMachine : MonoBehaviour
     private IState _currentState;
     private Player _player;
 
-    public readonly WalkState WalkState = new();
+    public readonly MoveState MoveState = new();
     public readonly IdleState IdleState = new();
     public readonly JumpState JumpState = new();
-    public readonly RunState RunState = new();
+    public readonly WalkState WalkState = new();
     public readonly InAirState InAirState = new();
     public readonly LandState LandState = new();
 

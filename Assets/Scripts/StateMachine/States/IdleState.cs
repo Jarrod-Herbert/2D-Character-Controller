@@ -11,11 +11,11 @@ public class IdleState : IState
         if (player.InputManager.JumpInput && player.CheckIfCanJump())
             return player.StateMachine.JumpState;
         
-        if (player.InputManager.Movement.x != 0 && player.Movement.IsSprinting)
-            return player.StateMachine.RunState;
-        
-        if (player.InputManager.Movement.x != 0 && !player.Movement.IsSprinting)
+        if (player.InputManager.Movement.x != 0 && player.Movement.IsWalking)
             return player.StateMachine.WalkState;
+        
+        if (player.InputManager.Movement.x != 0 && !player.Movement.IsWalking)
+            return player.StateMachine.MoveState;
         
         if (!player.IsGrounded)
             return player.StateMachine.InAirState;

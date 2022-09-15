@@ -5,33 +5,34 @@ using UnityEngine;
 public class WalkState : IState
 {
     private readonly int Walk = Animator.StringToHash("Walk");
-
+    
     public IState DoState(Player player)
     {
-        player.Movement.MoveHorizontal(player.InputManager.Movement.x);
-
+        player.Movement.WalkHorizontal(player.InputManager.Movement.x);
+        
         if (player.InputManager.JumpInput && player.CheckIfCanJump())
             return player.StateMachine.JumpState;
+
+        if (!player.Movement.IsWalking && player.InputManager.Movement.x != 0)
+            return player.StateMachine.MoveState;
         
         if (Mathf.Abs(player.Movement.XVelocity) <= 0.01f)
             return player.StateMachine.IdleState;
-
-        if (player.Movement.IsSprinting)
-            return player.StateMachine.RunState;
-
+        
         if (!player.IsGrounded)
             return player.StateMachine.InAirState;
 
         return player.StateMachine.WalkState;
     }
-    
+
     public void Enter(Player player)
-    { 
+    {
         player.AnimManager.PlayAnimation(Walk);
     }
 
     public void Exit(Player player)
     {
+        // throw new System.NotImplementedException();
     }
 
     public void AnimationTrigger()

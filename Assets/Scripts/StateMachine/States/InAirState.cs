@@ -18,7 +18,7 @@ public class InAirState : IState
         
         if (player.Movement.YVelocity < 0)
         {
-            Vector2 amount = Vector2.up * (Physics2D.gravity.y * (_fallMultipler - 1) * Time.deltaTime);
+            var amount = Vector2.up * (Physics2D.gravity.y * (_fallMultipler - 1) * Time.deltaTime);
             player.Movement.AddVelocity(amount);
         }
         
