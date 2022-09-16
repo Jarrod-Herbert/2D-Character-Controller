@@ -16,7 +16,7 @@ public class InAirState : IState
         if (coyoteTimeCounter > 0 && player.InputManager.JumpInput)
             return player.StateMachine.JumpState;
         
-        if (player.Movement.YVelocity < 0)
+        if (player.Movement.YVelocity < 3f)
         {
             var amount = Vector2.up * (Physics2D.gravity.y * (_fallMultipler - 1) * Time.deltaTime);
             player.Movement.AddVelocity(amount);
