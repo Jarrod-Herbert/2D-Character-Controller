@@ -16,6 +16,14 @@ public class AttackState : IState
         Animator.StringToHash("punch_c"),
         Animator.StringToHash("punch_d"),
     };
+
+    private readonly Vector2[] _addedVelocity = new Vector2[]
+    {
+        new Vector2(2f, 0),
+        new Vector2(2.5f, 0),
+        new Vector2(0, 0),
+        new Vector2(5,0)
+    }; 
     
     public IState DoState(Player player)
     {
@@ -41,6 +49,8 @@ public class AttackState : IState
     private void PerformAttack(Player player)
     {
         Punch(player, _anims[_attackIndex]);
+        player.Movement.SetVelocity(_addedVelocity[_attackIndex]);
+        _attackIndex++;
     }
 
     private void Punch(Player player, int id)
@@ -48,7 +58,6 @@ public class AttackState : IState
         player.InputManager.UseAttackInput();
         player.AnimManager.PlayAnimation(id);
         _animDone = false;
-        _attackIndex++;
     }
 
     public void Exit(Player player)

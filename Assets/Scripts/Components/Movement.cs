@@ -53,6 +53,8 @@ public class Movement : MonoBehaviour
     {
         _rb.velocity += amount;
     }
+
+    public void SetVelocity(Vector2 amount) => _rb.velocity = amount;
     
     public bool IsWalking
     {
