@@ -65,4 +65,6 @@ public class PlayerInputManager : MonoBehaviour
     {
         AttackInput = true;
     }
+
+    public void UseAttackInput() => AttackInput = false;
 }

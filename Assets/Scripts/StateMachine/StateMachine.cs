@@ -49,8 +49,7 @@ public class StateMachine : MonoBehaviour
         ChangeState(returnState);
     }
 
-    public void AnimationFinishTrigger()
-    {
-        _currentState.AnimationFinishTrigger();
-    }
+    public void AnimationFinishTrigger() => _currentState.AnimationFinishTrigger();
+
+    public void AnimationTrigger() => _currentState.AnimationTrigger();
 }
