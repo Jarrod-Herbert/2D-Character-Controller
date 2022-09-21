@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     
     public bool IsGrounded => Sensors.IsGrounded;
 
-    private int _facingDirection = 1;
+    public int FacingDirection { get; private set; }
 
     private void Awake()
     {
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         Sensors = GetComponent<Sensors>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         StateMachine = GetComponent<StateMachine>();
+        FacingDirection = 1;
     }
 
     private void Update()
@@ -37,12 +38,12 @@ public class Player : MonoBehaviour
 
     private void CheckIfShouldFlipSprite(float normalizedX)
     {
-        if (normalizedX != 0 && (int) normalizedX != _facingDirection) Flip();
+        if (normalizedX != 0 && (int) normalizedX != FacingDirection) Flip();
     }
 
     private void Flip()
     {
-        _facingDirection *= -1;
+        FacingDirection *= -1;
         SpriteRenderer.flipX = !SpriteRenderer.flipX;
     }
 

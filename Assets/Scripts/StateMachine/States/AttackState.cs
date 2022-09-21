@@ -8,6 +8,9 @@ public class AttackState : IState
     private int _attackIndex;
 
     private bool _animDone;
+
+    private readonly float _animInputBuffer = 0.275f;
+    private float _animInputCounter;
     
     private readonly int[] _anims = new int[4]
     {
@@ -33,9 +36,13 @@ public class AttackState : IState
         if (_attackIndex == 4)
             return player.StateMachine.IdleState;
         
+        if (_animInputCounter < 0)
+            return player.StateMachine.IdleState;
+        
         if (player.InputManager.AttackInput)
             PerformAttack(player);
-        
+
+        _animInputCounter -= Time.deltaTime;
         return player.StateMachine.AttackState;
     }
     
@@ -48,16 +55,18 @@ public class AttackState : IState
 
     private void PerformAttack(Player player)
     {
-        Punch(player, _anims[_attackIndex]);
-        player.Movement.SetVelocity(_addedVelocity[_attackIndex]);
+        player.InputManager.UseAttackInput();
+        Punch(player);
+        
         _attackIndex++;
     }
 
-    private void Punch(Player player, int id)
+    private void Punch(Player player)
     {
-        player.InputManager.UseAttackInput();
-        player.AnimManager.PlayAnimation(id);
         _animDone = false;
+        
+        player.AnimManager.PlayAnimation(_anims[_attackIndex]);
+        player.Movement.SetVelocity(_addedVelocity[_attackIndex] * player.FacingDirection);
     }
 
     public void Exit(Player player)
@@ -66,11 +75,12 @@ public class AttackState : IState
 
     public void AnimationTrigger()
     {
-        Debug.Log($"[ PUNCH {_attackIndex} ]");
+        Debug.Log($"[ ATTACK {_attackIndex} ]");
     }
 
     public void AnimationFinishTrigger()
     {
         _animDone = true;
+        _animInputCounter = _animInputBuffer;
     }
 }
