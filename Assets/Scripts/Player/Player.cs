@@ -47,14 +47,6 @@ public class Player : MonoBehaviour
         SpriteRenderer.flipX = !SpriteRenderer.flipX;
     }
 
-    public void AttemptToJump(InputAction.CallbackContext obj)
-    {
-        if (!CheckIfCanJump()) return;
-
-        StateMachine.ChangeState(StateMachine.JumpState);
-        // Movement.Jump();
-    }
-
     public bool CheckIfCanJump()
     {
         return IsGrounded || (!IsGrounded && Movement.JumpsRemaining > 0);
