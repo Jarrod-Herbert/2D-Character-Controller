@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "bcff50d0-6f16-468a-9d3b-dd4a8cb598a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -57,7 +66,7 @@
                 {
                     "name": "up",
                     "id": "e680015e-a782-4a59-aa0b-cebe39b01449",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -68,7 +77,7 @@
                 {
                     "name": "down",
                     "id": "2f2acb8f-7638-4351-8bbf-78886af5c4ec",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -79,7 +88,7 @@
                 {
                     "name": "left",
                     "id": "0f585daf-a6a1-4ac9-aff9-05a156db9f68",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -90,7 +99,7 @@
                 {
                     "name": "right",
                     "id": "4ca70cd7-1194-418b-8660-7923d253f1c4",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -128,6 +137,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "WalkFinish",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05b28c13-9b86-4260-9f70-ef9b25766983",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
