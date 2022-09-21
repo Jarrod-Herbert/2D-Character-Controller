@@ -8,15 +8,24 @@ public class AttackState : IState
     private int _attackIndex;
 
     private bool _animDone;
-
-    private readonly int PunchA = Animator.StringToHash("punch_a");
-    private readonly int PunchB = Animator.StringToHash("punch_b");
-    private readonly int PunchC = Animator.StringToHash("punch_c");
-    private readonly int PunchD = Animator.StringToHash("punch_d");
+    
+    private readonly int[] _anims = new int[4]
+    {
+        Animator.StringToHash("punch_a"),
+        Animator.StringToHash("punch_b"),
+        Animator.StringToHash("punch_c"),
+        Animator.StringToHash("punch_d"),
+    };
     
     public IState DoState(Player player)
     {
-        if (_animDone && player.InputManager.AttackInput)
+        if (!_animDone)
+            return player.StateMachine.AttackState;
+        
+        if (_attackIndex == 4)
+            return player.StateMachine.IdleState;
+        
+        if (player.InputManager.AttackInput)
             PerformAttack(player);
         
         return player.StateMachine.AttackState;
@@ -26,20 +35,12 @@ public class AttackState : IState
     public void Enter(Player player)
     {
         _attackIndex = 0;
-        
         PerformAttack(player);
     }
 
     private void PerformAttack(Player player)
     {
-        if (_attackIndex == 0)
-            Punch(player, PunchA);
-        else if (_attackIndex == 1)
-            Punch(player, PunchB);
-        else if (_attackIndex == 2)
-            Punch(player, PunchC);
-        else if (_attackIndex == 3) 
-            Punch(player, PunchD);
+        Punch(player, _anims[_attackIndex]);
     }
 
     private void Punch(Player player, int id)
