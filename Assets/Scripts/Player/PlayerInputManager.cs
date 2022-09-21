@@ -8,6 +8,8 @@ public class PlayerInputManager : MonoBehaviour
 {
     [SerializeField] private float _inputBufferDuration = 0.2f;
     public Vector2 Movement => _playerInputActions.Player.Movement.ReadValue<Vector2>();
+    public bool AttackInput;
+
     public bool JumpInput;
 
     private Player _player;
@@ -28,6 +30,8 @@ public class PlayerInputManager : MonoBehaviour
 
         _playerInputActions.Player.WalkStart.performed += _player.Movement.Walk;
         _playerInputActions.Player.WalkFinish.performed += _player.Movement.Walk;
+
+        _playerInputActions.Player.Attack.performed += Attack;
         
         _playerInputActions.Player.Enable();
     }
@@ -55,5 +59,10 @@ public class PlayerInputManager : MonoBehaviour
     public void UseJumpInput()
     {
         JumpInput = false;
+    }
+    
+    private void Attack(InputAction.CallbackContext context)
+    {
+        AttackInput = true;
     }
 }

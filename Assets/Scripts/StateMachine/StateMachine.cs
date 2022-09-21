@@ -14,6 +14,7 @@ public class StateMachine : MonoBehaviour
     public readonly WalkState WalkState = new();
     public readonly InAirState InAirState = new();
     public readonly LandState LandState = new();
+    public readonly AttackState AttackState = new();
 
     private void Awake()
     {

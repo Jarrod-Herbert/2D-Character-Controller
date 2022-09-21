@@ -10,6 +10,9 @@ public class IdleState : IState
     {
         if (player.InputManager.JumpInput && player.CheckIfCanJump())
             return player.StateMachine.JumpState;
+
+        if (player.InputManager.AttackInput)
+            return player.StateMachine.AttackState;
         
         if (player.InputManager.Movement.x != 0 && player.Movement.IsWalking)
             return player.StateMachine.WalkState;
