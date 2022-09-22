@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     
     public bool IsGrounded => Sensors.IsGrounded;
 
-    public int FacingDirection { get; private set; }
+    public int FacingDirection { get; private set; } = 1;
 
     private void Awake()
     {
@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
         Sensors = GetComponent<Sensors>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         StateMachine = GetComponent<StateMachine>();
-        FacingDirection = 1;
     }
 
     private void Update()

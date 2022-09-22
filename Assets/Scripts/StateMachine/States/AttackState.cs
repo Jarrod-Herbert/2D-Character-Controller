@@ -6,6 +6,7 @@ using UnityEngine;
 public class AttackState : IState
 {
     private int _attackIndex;
+    private Player _player;
 
     private bool _animDone;
 
@@ -20,12 +21,9 @@ public class AttackState : IState
         Animator.StringToHash("punch_d"),
     };
 
-    private readonly Vector2[] _addedVelocity = new Vector2[]
+    private readonly float[] _addedVelocity = new float[]
     {
-        new Vector2(2f, 0),
-        new Vector2(2.5f, 0),
-        new Vector2(0, 0),
-        new Vector2(5,0)
+        1.1f, 1.2f, 1.2f, 2.2f
     }; 
     
     public IState DoState(Player player)
@@ -50,6 +48,7 @@ public class AttackState : IState
     public void Enter(Player player)
     {
         _attackIndex = 0;
+        _player = player;
         PerformAttack(player);
     }
 
@@ -66,7 +65,7 @@ public class AttackState : IState
         _animDone = false;
         
         player.AnimManager.PlayAnimation(_anims[_attackIndex]);
-        player.Movement.SetVelocity(_addedVelocity[_attackIndex] * player.FacingDirection);
+        player.Movement.SetVelocity(new Vector2((_addedVelocity[_attackIndex] * player.FacingDirection), 0));
     }
 
     public void Exit(Player player)
@@ -82,5 +81,6 @@ public class AttackState : IState
     {
         _animDone = true;
         _animInputCounter = _animInputBuffer;
+        _player.Movement.SetVelocityZero();
     }
 }
